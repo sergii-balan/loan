@@ -7,7 +7,7 @@ import javassist.NotFoundException;
 
 public interface LoanService {
 
-	Loan create(String ip, Loan loan);
+	Loan create(Loan loan);
 	Loan get(Long loanId) throws NotFoundException;
 	Loan update(Loan loan);
 	List<Loan> getList(Long userId);

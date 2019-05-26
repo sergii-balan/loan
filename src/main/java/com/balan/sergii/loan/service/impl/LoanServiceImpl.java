@@ -1,6 +1,5 @@
 package com.balan.sergii.loan.service.impl;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +20,7 @@ public class LoanServiceImpl implements LoanService {
 	private LoanRepository loanRepository;
 
 	@Override
-	public Loan create(String ip, Loan loan) {
+	public Loan create(Loan loan) {
 		return loanRepository.save(loan);
 	}
 

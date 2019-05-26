@@ -39,11 +39,13 @@ public class Loans {
 	
     @PutMapping
     public void create(@RequestBody Loan loan) {
-    	loanService.create(clientRequest.getRemoteAddr(), loan);
+    	loan.setIp(clientRequest.getRemoteAddr());
+    	loanService.create(loan);
     } 
    
     @PostMapping
     public void update(@RequestBody Loan loan) {
+    	loan.setIp(clientRequest.getRemoteAddr());
     	loanService.update(loan);
     }     
     
