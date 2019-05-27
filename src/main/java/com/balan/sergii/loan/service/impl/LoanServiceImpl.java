@@ -30,7 +30,7 @@ public class LoanServiceImpl implements LoanService {
 			throw new EntityExistsException("Allowed limit exceeded for this IP");
 		}
 		
-		if (MAX_ALLOWED_TRIES_PER_IP <= loanRepository.getIpHitsCountByUser(loan.getUserId(), loan.getIp(), loan.getStartDate())) {
+		if (MAX_ALLOWED_TRIES_PER_IP <= loanRepository.getIpHitsCount(loan.getIp(), loan.getStartDate())) {
 			throw new LimitExceededException("Allowed limit exceeded for this IP");
 		}
 		return loanRepository.save(loan);
