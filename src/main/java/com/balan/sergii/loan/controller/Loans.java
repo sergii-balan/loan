@@ -2,6 +2,7 @@ package com.balan.sergii.loan.controller;
 
 import java.util.List;
 
+import javax.naming.LimitExceededException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class Loans {
 	private LoanService loanService;
 	
     @PutMapping
-    public void create(@RequestBody Loan loan) {
+    public void create(@RequestBody Loan loan) throws LimitExceededException {
     	loan.setIp(clientRequest.getRemoteAddr());
     	loanService.create(loan);
     } 

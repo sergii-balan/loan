@@ -11,12 +11,10 @@ import org.hibernate.event.spi.PreInsertEventListener;
 import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.query.Query;
 import org.joda.time.DateTime;
-import org.springframework.stereotype.Component;
-
 import com.balan.sergii.loan.dao.Loan;
 
 @SuppressWarnings("serial")
-@Component
+//@Component
 public class LoanPreInsertListener implements PreInsertEventListener{
 
 	@PersistenceUnit
