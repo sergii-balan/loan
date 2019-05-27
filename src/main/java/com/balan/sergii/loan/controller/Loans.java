@@ -45,7 +45,7 @@ public class Loans {
     } 
    
     @PostMapping
-    public Loan update(@RequestBody Loan loan) {
+    public Loan update(@RequestBody Loan loan) throws NotFoundException {
     	loan.setIp(clientRequest.getRemoteAddr());
     	return loanService.update(loan);
     }     

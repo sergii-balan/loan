@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javassist.NotFoundException;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class LoanNotFoundAdvice {
 
 	@ExceptionHandler(NotFoundException.class)
