@@ -15,7 +15,6 @@ public class LoanListener {
 	
 	@PrePersist
     private void onCreate(Loan loan) {
-        checkIp(loan.getIp());
         checkInterestRate(loan);
     }
 	
@@ -23,10 +22,6 @@ public class LoanListener {
     private void onUpdate(Loan loan) {
 		extendLoan(loan);
     }
-	
-	private void checkIp(String ip) {
-
-	}
 	
 	private void checkInterestRate(Loan loan) {
 		

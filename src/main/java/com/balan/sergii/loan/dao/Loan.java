@@ -15,7 +15,7 @@ import org.springframework.lang.NonNull;
 import com.balan.sergii.loan.dao.listener.LoanListener;
 
 @Entity
-@Table(name = "loans")
+//@Table(name = "loans")
 @EntityListeners(LoanListener.class)
 public class Loan {
 	@Id
@@ -52,6 +52,7 @@ public class Loan {
 	}	
 	
 	public Long getUserId() {
+		System.out.println(">>> - getUserId.");
 		return userId;
 	}
 
@@ -92,6 +93,7 @@ public class Loan {
 	}
 
 	public String getIp() {
+		System.out.println(">>> - getIp.");
 		return ip;
 	}
 
