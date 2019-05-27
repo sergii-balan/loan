@@ -15,6 +15,7 @@
 /*/bin/
 /*/bin/**
 /.gradle
+/.classpath
 /.settings
 /.settings/**
 
