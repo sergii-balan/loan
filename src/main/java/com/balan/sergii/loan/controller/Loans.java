@@ -39,15 +39,15 @@ public class Loans {
 	private LoanService loanService;
 	
     @PutMapping
-    public void create(@RequestBody Loan loan) throws LimitExceededException {
+    public Loan create(@RequestBody Loan loan) throws LimitExceededException {
     	loan.setIp(clientRequest.getRemoteAddr());
-    	loanService.create(loan);
+    	return loanService.create(loan);
     } 
    
     @PostMapping
-    public void update(@RequestBody Loan loan) {
+    public Loan update(@RequestBody Loan loan) {
     	loan.setIp(clientRequest.getRemoteAddr());
-    	loanService.update(loan);
+    	return loanService.update(loan);
     }     
     
     @GetMapping
