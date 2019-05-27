@@ -14,12 +14,12 @@ The app defines following APIs.
 
 Content-Type = "application/json"
 
-##Get
+## Get
 
 Headers:
    UserId = "userId"
 
-##Put
+## Put
 
 ```javascript
 {
@@ -29,7 +29,8 @@ Headers:
     "closeDate": "2019-05-27"
 }
 ```
-##Post
+## Post
+
 ```javascript
 {"id":null,"userId":2,"amount":10,"startDate":null,"termHrs":20}
 ```
