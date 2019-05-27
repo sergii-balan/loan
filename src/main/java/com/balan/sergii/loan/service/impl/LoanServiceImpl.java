@@ -42,7 +42,7 @@ public class LoanServiceImpl implements LoanService {
 
 	@Override
 	public List<Loan> getList(Long userId) {
-		return loanRepository.findAll();
+		return loanRepository.findByUserId(userId);
 	}
 
 }

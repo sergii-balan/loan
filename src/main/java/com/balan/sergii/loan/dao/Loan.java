@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.lang.NonNull;
@@ -52,7 +51,6 @@ public class Loan {
 	}	
 	
 	public Long getUserId() {
-		System.out.println(">>> - getUserId.");
 		return userId;
 	}
 
@@ -93,7 +91,6 @@ public class Loan {
 	}
 
 	public String getIp() {
-		System.out.println(">>> - getIp.");
 		return ip;
 	}
 
