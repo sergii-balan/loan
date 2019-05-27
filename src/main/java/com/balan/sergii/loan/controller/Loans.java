@@ -30,7 +30,7 @@ import javassist.NotFoundException;
 @ResponseStatus(HttpStatus.OK)
 public class Loans {
     
-	private static final String HDR_USER = "UserId";
+	public static final String HDR_USER = "UserId";
 
 	@Autowired
 	private HttpServletRequest clientRequest;
