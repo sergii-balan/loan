@@ -1,5 +1,7 @@
 package com.balan.sergii.loan.controller.advice;
 
+import java.util.InputMismatchException;
+
 import javax.naming.LimitExceededException;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
@@ -21,13 +23,19 @@ public class LoanExceptionsAdvice {
 	
 	@ExceptionHandler(EntityNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	@ResponseBody String LoanNotFoundHandler(EntityNotFoundException ex) {
+	@ResponseBody String loanNotFoundHandler(EntityNotFoundException ex) {
 		return ex.getMessage();
 	}
 	
 	@ExceptionHandler(EntityExistsException.class)
 	@ResponseStatus(HttpStatus.CONFLICT)
-	@ResponseBody String LoanExistsHandler(EntityExistsException ex) {
+	@ResponseBody String loanExistsHandler(EntityExistsException ex) {
+		return ex.getMessage();
+	}
+	
+	@ExceptionHandler(InputMismatchException.class)
+	@ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+	@ResponseBody String loanMalformedHandler(EntityExistsException ex) {
 		return ex.getMessage();
 	}
 }

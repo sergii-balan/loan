@@ -87,7 +87,7 @@ public class TestLoansController {
 		
 		Loan extendedLoan = doExchange("/loans", HttpMethod.POST, loan);
 		
-		assertEquals(loan.getId(), extendedLoan.getId());
+		assertEquals(loan.getId(), extendedLoan.getMasterId());
 		assertEquals((Double)1.5, extendedLoan.getInterestRate());
     }     
 
