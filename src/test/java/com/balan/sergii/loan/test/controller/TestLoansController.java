@@ -4,6 +4,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.joda.time.DateTime;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -145,9 +148,8 @@ public class TestLoansController {
 		assertNotNull(loan.getId());
 		assertEquals((Double)1.1, loan.getInterestRate());
 		
-		Loan loanById = doExchange("/loans/" + loan.getId(), HttpMethod.GET, loan);
-		
-		assertEquals(loan.getId(), loanById.getId());
+		List<Loan> loansById = doExchange("/loans/" + loan.getId(), HttpMethod.GET);
+		assertEquals(loan.getId(), loansById.get(0).getId());
 	}
 	
 	@Test
@@ -217,4 +219,17 @@ public class TestLoansController {
 		return resultLoan;
     }
 
+	private List<Loan> doExchange(String url, HttpMethod method) {
+		//restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+				
+		HttpEntity<List<Loan>> requestEntity = new HttpEntity<List<Loan>>(headers);
+				
+		HttpEntity<Loan[]> response = restTemplate.exchange(url, method, requestEntity, Loan[].class);
+		Loan[] resultLoan = response.getBody();
+		return Arrays.asList(resultLoan);
+    }
+	
 }

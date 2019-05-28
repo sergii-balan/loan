@@ -39,14 +39,14 @@ public class LoanServiceImpl implements LoanService {
 	}
 
 	@Override
-	public Loan get(Long loanId) {
-		Optional<Loan> loan = loanRepository.findById(loanId);
+	public List<Loan> get(Long loanId) {
+		List<Loan> loans = loanRepository.getLoansById(loanId);
 		
-		if (!loan.isPresent()) {
+		if (loans == null || loans.isEmpty() ) {
 			throw new EntityNotFoundException("Loan doesn't exists: " + loanId);
 		}
 		
-		return loan.get();
+		return loans;
 	}
 
 	@Override

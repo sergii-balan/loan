@@ -56,7 +56,7 @@ public class LoansController {
     }
     
     @GetMapping("/{loanId}")
-    public Loan get(@PathVariable Long loanId) throws NotFoundException {
+    public List<Loan> get(@PathVariable Long loanId) throws NotFoundException {
     	return loanService.get(loanId);
     }
     
