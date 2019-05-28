@@ -148,7 +148,7 @@ public class TestLoansController {
 		assertNotNull(loan.getId());
 		assertEquals((Double)1.1, loan.getInterestRate());
 		
-		List<Loan> loansById = doExchange("/loans/" + loan.getId(), HttpMethod.GET);
+		List<Loan> loansById = doGet("/loans/" + loan.getId());
 		assertEquals(loan.getId(), loansById.get(0).getId());
 	}
 	
@@ -219,15 +219,13 @@ public class TestLoansController {
 		return resultLoan;
     }
 
-	private List<Loan> doExchange(String url, HttpMethod method) {
-		//restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-
+	private List<Loan> doGet(String url) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 				
 		HttpEntity<List<Loan>> requestEntity = new HttpEntity<List<Loan>>(headers);
 				
-		HttpEntity<Loan[]> response = restTemplate.exchange(url, method, requestEntity, Loan[].class);
+		HttpEntity<Loan[]> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, Loan[].class);
 		Loan[] resultLoan = response.getBody();
 		return Arrays.asList(resultLoan);
     }
