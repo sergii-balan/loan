@@ -28,7 +28,7 @@ import javassist.NotFoundException;
 				produces = MediaType.APPLICATION_JSON_VALUE,
 				consumes = MediaType.APPLICATION_JSON_VALUE)
 @ResponseStatus(HttpStatus.OK)
-public class Loans {
+public class LoansController {
     
 	public static final String HDR_USER = "UserId";
 

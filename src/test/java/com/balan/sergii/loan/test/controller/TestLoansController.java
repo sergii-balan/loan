@@ -20,7 +20,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.balan.sergii.loan.controller.Loans;
+import com.balan.sergii.loan.controller.LoansController;
 import com.balan.sergii.loan.dao.Loan;
 
 @ExtendWith(SpringExtension.class)
@@ -119,7 +119,7 @@ public class TestLoansController {
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set(Loans.HDR_USER, "2");
+		headers.set(LoansController.HDR_USER, "2");
 				
 		HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
 				
@@ -181,7 +181,7 @@ public class TestLoansController {
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set(Loans.HDR_USER, "4");
+		headers.set(LoansController.HDR_USER, "4");
 				
 		HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
 				
