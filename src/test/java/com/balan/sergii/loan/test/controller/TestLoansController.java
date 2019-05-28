@@ -2,8 +2,6 @@ package com.balan.sergii.loan.test.controller;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -171,15 +169,12 @@ public class TestLoansController {
 				+ "\"closeDate\": \"2019-05-27\""
 				+ "}";
 		
-		doExchange("/loans", HttpMethod.PUT, json2);
-		doExchange("/loans", HttpMethod.PUT, json2);
-		doExchange("/loans", HttpMethod.PUT, json4);
 		
-		assertThrows(RuntimeException.class, () -> {
-			doExchange("/loans", HttpMethod.PUT, json4);
-	    });
-		
-
+		doPut("/loans", json2);
+		doPut("/loans", json2);
+		doPut("/loans", json4);
+		String errorMessage = doPut("/loans", json4);
+		assertEquals("Allowed limit exceeded for this IP", errorMessage);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -228,6 +223,16 @@ public class TestLoansController {
 		HttpEntity<Loan[]> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, Loan[].class);
 		Loan[] resultLoan = response.getBody();
 		return Arrays.asList(resultLoan);
+    }
+
+	private String doPut(String url, String json) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+				
+		HttpEntity<String> requestEntity = new HttpEntity<String>(json, headers);
+				
+		HttpEntity<String> response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
+		return response.getBody();
     }
 	
 }
