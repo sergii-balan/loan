@@ -1,8 +1,8 @@
 package com.balan.sergii.loan.test.controller;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.joda.time.DateTime;
 import org.junit.jupiter.api.DisplayName;
@@ -93,7 +93,7 @@ public class TestLoansController {
 
 	
 	@Test
-	@DisplayName("GET all Loans")
+	@DisplayName("GET all Loans by UserId")
 	public void getListByUserId() {
 		String json2 = "{"
 				+ "\"userId\": 2,"
