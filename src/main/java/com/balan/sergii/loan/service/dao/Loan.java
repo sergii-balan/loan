@@ -14,7 +14,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.balan.sergii.loan.dao.listener.LoanListener;
 
 @Entity
-//@Table(name = "loans")
+@Table(name = "loans")
 @EntityListeners(LoanListener.class)
 public class Loan {
 	@Id
