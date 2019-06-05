@@ -42,8 +42,8 @@ public class LoansController {
     public Loan create(@RequestBody Loan loan) throws LimitExceededException {
     	loan.setIp(clientRequest.getRemoteAddr());
     	return loanService.create(loan);
-    } 
-   
+    }
+    
     @PostMapping
     public Loan update(@RequestBody Loan loan) throws NotFoundException {
     	loan.setIp(clientRequest.getRemoteAddr());
