@@ -10,6 +10,6 @@ public interface LoanService {
 
 	Loan create(Loan loan) throws LimitExceededException;
 	List<Loan> get(Long loanId);
-	Loan update(Loan loan);
+	Loan extend(Loan loanExtension);
 	List<Loan> getList(Long userId);
 }

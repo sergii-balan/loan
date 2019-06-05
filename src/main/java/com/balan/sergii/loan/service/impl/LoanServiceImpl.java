@@ -2,8 +2,6 @@ package com.balan.sergii.loan.service.impl;
 
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Optional;
-
 import javax.naming.LimitExceededException;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
@@ -50,21 +48,18 @@ public class LoanServiceImpl implements LoanService {
 	}
 
 	@Override
-	public Loan update(Loan newLoan) {
-		Optional<Loan> result = loanRepository.findById(newLoan.getId());
-		if (!result.isPresent()) {
-			throw new EntityNotFoundException("Loan doesn't exists: " + newLoan.getId());
-		}
+	public Loan extend(Loan loanExtension) {
+		Loan loan = loanRepository
+					.findById(loanExtension.getId())
+					.orElseThrow(()-> new EntityNotFoundException("Loan doesn't exists: " + loanExtension.getId()));
 		
-		Loan oldLoan = result.get();
-		
-		if(oldLoan.getCloseDate().before(newLoan.getCloseDate())) {
-			newLoan.setId(null);
-			newLoan.setMasterId(oldLoan.getId());
-			newLoan.setStartDate(new DateTime(oldLoan.getCloseDate()).plusDays(1).toDate());
-			newLoan.setInterestRate(MAX_INTEREST);
+		if(loan.getCloseDate().before(loanExtension.getCloseDate())) {
+			loanExtension.setId(null);
+			loanExtension.setMasterId(loan.getId());
+			loanExtension.setStartDate(new DateTime(loan.getCloseDate()).plusDays(1).toDate());
+			loanExtension.setInterestRate(MAX_INTEREST);
 			
-			return loanRepository.save(newLoan);
+			return loanRepository.save(loanExtension);
 		}
 		
 		throw new InputMismatchException("Malformed loan");
