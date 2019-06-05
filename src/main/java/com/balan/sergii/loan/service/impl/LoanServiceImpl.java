@@ -1,12 +1,12 @@
 package com.balan.sergii.loan.service.impl;
 
+import java.time.temporal.ChronoUnit;
 import java.util.InputMismatchException;
 import java.util.List;
 import javax.naming.LimitExceededException;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,10 +53,10 @@ public class LoanServiceImpl implements LoanService {
 					.findById(loanExtension.getId())
 					.orElseThrow(()-> new EntityNotFoundException("Loan doesn't exists: " + loanExtension.getId()));
 		
-		if(loan.getCloseDate().before(loanExtension.getCloseDate())) {
+		if(loan.getCloseDate().isBefore(loanExtension.getCloseDate())) {
 			loanExtension.setId(null);
 			loanExtension.setMasterId(loan.getId());
-			loanExtension.setStartDate(new DateTime(loan.getCloseDate()).plusDays(1).toDate());
+			loanExtension.setStartDate(loan.getCloseDate().plus(1, ChronoUnit.DAYS));
 			loanExtension.setInterestRate(MAX_INTEREST);
 			
 			return loanRepository.save(loanExtension);

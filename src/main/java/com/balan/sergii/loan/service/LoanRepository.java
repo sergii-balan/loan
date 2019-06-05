@@ -1,6 +1,6 @@
 package com.balan.sergii.loan.service;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,8 +17,8 @@ public interface LoanRepository extends JpaRepository<Loan, Long>{
 	List<Loan> getLoansById(@Param("id") Long id);
 	
 	@Query("SELECT count(*) FROM Loan l WHERE l.ip=:ip AND startDate>=:startDate")
-	Long getIpHitsCount(@Param("ip") String ip, @Param("startDate") Date startDate);
+	Long getIpHitsCount(@Param("ip") String ip, @Param("startDate") Instant startDate);
 	
 	@Query("SELECT count(*) FROM Loan l WHERE l.userId=:userId AND l.ip=:ip AND startDate>=:startDate")
-	Long getIpHitsCountByUser(@Param("userId") Long userId, @Param("ip") String ip, @Param("startDate") Date startDate);
+	Long getIpHitsCountByUser(@Param("userId") Long userId, @Param("ip") String ip, @Param("startDate") Instant startDate);
 }

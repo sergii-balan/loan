@@ -1,11 +1,12 @@
 package com.balan.sergii.loan.dao.listener;
 
-import java.util.Date;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoField;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-
-import org.joda.time.DateTime;
 
 import com.balan.sergii.loan.service.dao.Loan;
 
@@ -35,9 +36,8 @@ public class LoanListener {
 		return true;
 	}
 	
-	private boolean isInMaxRiskTimeInterval(final Date date) {
-		DateTime dateTime = new DateTime(date);
-		return dateTime.getHourOfDay() < CRITICAL_HRS_END;
+	private boolean isInMaxRiskTimeInterval(final Instant date) {
+		return LocalDateTime.ofInstant(date, ZoneOffset.UTC).getHour() < CRITICAL_HRS_END;
 	}
 
 }

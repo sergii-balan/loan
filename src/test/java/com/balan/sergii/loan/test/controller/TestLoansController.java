@@ -2,10 +2,12 @@ package com.balan.sergii.loan.test.controller;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
 
-import org.joda.time.DateTime;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,8 +41,8 @@ public class TestLoansController {
 				+ "\"userId\": 2,"
 				+ "\"amount\": 10,"
 				+ "\"interestRate\": 1.1,"
-				+ "\"startDate\": \"2019-05-26T01:08\","
-				+ "\"closeDate\": \"2019-05-27\""
+				+ "\"startDate\": \"2019-05-26T01:08:00Z\","
+				+ "\"closeDate\": \"2019-05-27T00:00:00Z\""
 				+ "}";
 		
 		Loan result = doExchange("/loans", HttpMethod.PUT, json);
@@ -56,8 +58,8 @@ public class TestLoansController {
 				+ "\"userId\": 2,"
 				+ "\"amount\": 10,"
 				+ "\"interestRate\": 1.1,"
-				+ "\"startDate\": \"2019-05-26T09:08\","
-				+ "\"closeDate\": \"2019-05-27\""
+				+ "\"startDate\": \"2019-05-26T09:08:00Z\","
+				+ "\"closeDate\": \"2019-05-27T00:00:00Z\""
 				+ "}";
 		
 		Loan resultLoan = doExchange("/loans", HttpMethod.PUT, json);
@@ -74,8 +76,8 @@ public class TestLoansController {
 				+ "\"userId\": 2,"
 				+ "\"amount\": 10,"
 				+ "\"interestRate\": 1.1,"
-				+ "\"startDate\": \"2019-05-26T09:00\","
-				+ "\"closeDate\": \"2019-05-27\""
+				+ "\"startDate\": \"2019-05-26T09:00:00Z\","
+				+ "\"closeDate\": \"2019-05-27T00:00:00Z\""
 				+ "}";
 		
 		Loan loan = doExchange("/loans", HttpMethod.PUT, json);
@@ -83,8 +85,9 @@ public class TestLoansController {
 		assertNotNull(loan.getId());
 		assertEquals((Double)1.1, loan.getInterestRate());
 		
-		DateTime extendedDate = new DateTime(loan.getCloseDate()).plusDays(1);
-		loan.setCloseDate(extendedDate.toDate());
+		Instant extendedDate = loan.getCloseDate().plus(1, ChronoUnit.DAYS);
+		
+		loan.setCloseDate(extendedDate);
 		
 		Loan extendedLoan = doExchange("/loans", HttpMethod.POST, loan);
 		
@@ -100,8 +103,8 @@ public class TestLoansController {
 				+ "\"userId\": 2,"
 				+ "\"amount\": 10,"
 				+ "\"interestRate\": 1.1,"
-				+ "\"startDate\": \"2019-05-26T09:00\","
-				+ "\"closeDate\": \"2019-05-27\""
+				+ "\"startDate\": \"2019-05-26T09:00:00Z\","
+				+ "\"closeDate\": \"2019-05-27T00:00:00Z\""
 				+ "}";
 		
 		doExchange("/loans", HttpMethod.PUT, json2);
@@ -111,8 +114,8 @@ public class TestLoansController {
 				+ "\"userId\": 3,"
 				+ "\"amount\": 10,"
 				+ "\"interestRate\": 1.1,"
-				+ "\"startDate\": \"2019-05-26T09:00\","
-				+ "\"closeDate\": \"2019-05-27\""
+				+ "\"startDate\": \"2019-05-26T09:00:00Z\","
+				+ "\"closeDate\": \"2019-05-27T00:00:00Z\""
 				+ "}";
 		
 		doExchange("/loans", HttpMethod.PUT, json3);		
@@ -137,8 +140,8 @@ public class TestLoansController {
 				+ "\"userId\": 2,"
 				+ "\"amount\": 10,"
 				+ "\"interestRate\": 1.1,"
-				+ "\"startDate\": \"2019-05-26T09:00\","
-				+ "\"closeDate\": \"2019-05-27\""
+				+ "\"startDate\": \"2019-05-26T09:00:00Z\","
+				+ "\"closeDate\": \"2019-05-27T00:00:00Z\""
 				+ "}";
 		
 		Loan loan = doExchange("/loans", HttpMethod.PUT, json);
@@ -157,16 +160,16 @@ public class TestLoansController {
 				+ "\"userId\": 2,"
 				+ "\"amount\": 10,"
 				+ "\"interestRate\": 1.1,"
-				+ "\"startDate\": \"2019-05-26T09:00\","
-				+ "\"closeDate\": \"2019-05-27\""
+				+ "\"startDate\": \"2019-05-26T09:00:00Z\","
+				+ "\"closeDate\": \"2019-05-27T00:00:00Z\""
 				+ "}";
 		
 		String json4 = "{"
 				+ "\"userId\": 4,"
 				+ "\"amount\": 10,"
 				+ "\"interestRate\": 1.1,"
-				+ "\"startDate\": \"2019-05-26T09:00\","
-				+ "\"closeDate\": \"2019-05-27\""
+				+ "\"startDate\": \"2019-05-26T09:00:00Z\","
+				+ "\"closeDate\": \"2019-05-27T00:00:00Z\""
 				+ "}";
 		
 		

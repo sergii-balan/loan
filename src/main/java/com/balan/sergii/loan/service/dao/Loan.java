@@ -1,8 +1,7 @@
 package com.balan.sergii.loan.service.dao;
 
 import java.math.BigDecimal;
-import java.util.Date;
-
+import java.time.Instant;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -30,9 +29,9 @@ public class Loan {
 	
 	@CreationTimestamp
 	@Column(nullable = false)
-	private Date startDate;
+	private Instant startDate;
 	@Column(nullable = false)
-	private Date closeDate;
+	private Instant closeDate;
 	private String ip;
 
 	public Long getId() {
@@ -75,19 +74,19 @@ public class Loan {
 		this.interestRate = interestRate;
 	}
 
-	public Date getStartDate() {
+	public Instant getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(Instant startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getCloseDate() {
+	public Instant getCloseDate() {
 		return closeDate;
 	}
 
-	public void setCloseDate(Date closeDate) {
+	public void setCloseDate(Instant closeDate) {
 		this.closeDate = closeDate;
 	}
 
