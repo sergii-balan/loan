@@ -6,7 +6,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
 import org.joda.time.DateTime;
-import com.balan.sergii.loan.dao.Loan;
+
+import com.balan.sergii.loan.service.dao.Loan;
 
 public class LoanListener {
 	

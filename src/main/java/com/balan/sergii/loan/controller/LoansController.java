@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.balan.sergii.loan.dao.Loan;
 import com.balan.sergii.loan.service.LoanService;
+import com.balan.sergii.loan.service.dao.Loan;
 
 import javassist.NotFoundException;
 

@@ -10,9 +10,9 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.balan.sergii.loan.dao.Loan;
 import com.balan.sergii.loan.service.LoanRepository;
 import com.balan.sergii.loan.service.LoanService;
+import com.balan.sergii.loan.service.dao.Loan;
 
 
 @Service

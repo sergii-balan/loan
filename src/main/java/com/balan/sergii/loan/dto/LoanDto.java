@@ -1,34 +1,21 @@
-package com.balan.sergii.loan.dao;
+package com.balan.sergii.loan.dto;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.lang.NonNull;
 
-import com.balan.sergii.loan.dao.listener.LoanListener;
-
-@Entity
-//@Table(name = "loans")
-@EntityListeners(LoanListener.class)
-public class Loan {
-	@Id
-	@GeneratedValue//(strategy = GenerationType.IDENTITY)
+public class LoanDto {
 	private Long id;
 	private Long masterId;
-	@NonNull
+
 	private Long userId;
 	@NonNull
 	private BigDecimal amount;
 	@NonNull
 	private Double interestRate;
 	
-	@CreationTimestamp
+	@NonNull
 	private Date startDate;
 	@NonNull
 	private Date closeDate;

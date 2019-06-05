@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.naming.LimitExceededException;
 
-import com.balan.sergii.loan.dao.Loan;
+import com.balan.sergii.loan.service.dao.Loan;
 
 public interface LoanService {
 

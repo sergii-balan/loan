@@ -22,7 +22,7 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.balan.sergii.loan.controller.LoansController;
-import com.balan.sergii.loan.dao.Loan;
+import com.balan.sergii.loan.service.dao.Loan;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
